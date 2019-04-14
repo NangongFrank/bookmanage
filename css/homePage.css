@@ -6,15 +6,9 @@ header {
   position: relative;
   background-image: url("../static/img/home/titleBanner.png");
   background-repeat: repeat-x;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   padding-left: 3em;
 }
 header::after {
@@ -44,25 +38,16 @@ header .loginInfo a:hover {
   text-decoration: none;
 }
 .page-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 .page-box .book-pagechange {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 20em;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   font-size: 12px;
   color: #ccc;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 .page-box .book-pagechange span {
   border: 1px solid #ddd;
@@ -75,36 +60,29 @@ header .loginInfo a:hover {
   background-color: #07f;
 }
 content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 content .sidebar {
   width: 8em;
-  background-color: #666;
+  background-color: #ddd;
   padding-top: 2em;
 }
 content .sidebar .item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background-color: #444;
+  align-items: center;
+  justify-content: center;
+  background-color: #e4e7ed;
   margin-bottom: 4px;
   padding: 3px 5px;
   font-size: 18px;
+  color: #606266;
 }
 content .sidebar .item:hover {
   cursor: pointer;
-  color: #aaa;
 }
 content .sidebar .itemSelected {
-  background-color: #899;
+  background-color: #909299;
+  color: #fff;
 }
 content .content {
   width: 100%;
@@ -116,24 +94,17 @@ content .content .book {
   padding-top: 2.4em;
 }
 content .content .book .book-ctrl {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
   padding-left: 4em;
 }
 content .content .book .book-ctrl .book-pagechange {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 20em;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   font-size: 12px;
   color: #ccc;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 content .content .book .book-ctrl .book-pagechange span {
   border: 1px solid #ddd;
@@ -146,9 +117,7 @@ content .content .book .book-ctrl .book-pagechange span:hover {
   background-color: #07f;
 }
 content .content .book .book-ctrl .book-search {
-  -webkit-box-flex: 5;
-      -ms-flex: 5;
-          flex: 5;
+  flex: 5;
 }
 content .content .book .book-ctrl .book-search input {
   width: 16em;
@@ -161,13 +130,9 @@ content .content .book .book-ctrl .book-search button {
 }
 content .content .book .book-power {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-around;
   padding: 3em 0.5em;
 }
 content .content .book .book-power .vh {
@@ -175,44 +140,26 @@ content .content .book .book-power .vh {
 }
 content .content .book .book-power li {
   width: 22%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   color: #123;
   font-size: 14px;
   padding: 1.2em;
 }
 content .content .book .book-power li .li-img {
   width: 60%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 content .content .book .book-power li .li-img span {
   margin-left: 1em;
   white-space: nowrap;
 }
 content .content .book .book-power li .li-text {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 content .content .book .book-power li .li-text span {
   padding-top: 4px;
@@ -225,31 +172,17 @@ content .content .book .book-power li .li-text .text-task {
   font-size: 12px;
 }
 content .content .borrow {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  align-items: flex-start;
 }
 content .content .borrow .borrow-books {
   padding: 5em 0;
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex: 3;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 content .content .borrow .borrow-books .borrow-user table {
   border: 0;
@@ -304,34 +237,18 @@ content .content .borrow .borrow-books .book-ctrl table tbody tr td a:hover {
   color: #ddd;
 }
 content .content .borrow ul {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
   padding-right: 2em;
   margin: 3em 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+  flex-direction: column-reverse;
 }
 content .content .borrow ul li {
   height: 10em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 content .content .borrow ul li .li-logo {
   width: 5.6em;
@@ -350,44 +267,28 @@ content .content .borrow ul li:hover .li-tip {
   background-color: #348;
 }
 content .content .manager {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   padding: 10px 0 24px 16px;
 }
 content .content .manager .book-search {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 240px;
   height: 32px;
 }
 content .content .manager .book-search input {
-  -webkit-box-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
+  flex: 3;
 }
 content .content .manager .book-search button {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  flex: 1;
 }
 content .content .manager .manager-head {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
   margin-bottom: 2em;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
+  align-self: flex-start;
 }
 content .content .manager .manager-head li {
   padding: 6px 10px;
@@ -396,11 +297,8 @@ content .content .manager .manager-head li:hover {
   cursor: pointer;
 }
 content .content .manager .admonition {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  align-self: flex-end;
   padding: 3em 4em 0 0;
 }
 content .content .manager .admonition h2 {
@@ -413,13 +311,8 @@ content .content .manager .admonition h2 {
 }
 content .content .manager .admonition .admonition-right,
 content .content .manager .admonition .admonition-left {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 content .content .manager p {
   padding: 10px 0;
@@ -478,15 +371,9 @@ content .content .manager .manager-author table tbody tr td {
 }
 footer {
   height: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   font-size: 12px;
   color: #aaa;
   background-color: #ccc;
