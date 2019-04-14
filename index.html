@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>登录</title>
+	<link rel="stylesheet" href="css/public.css">
+	<link rel="stylesheet" href="css/login.css">
+	<script src="static/js/vue.min.js"></script>
+	<script src="static/js/vue-resource.min.js"></script>
+	<script src="static/js/jquery2.0.3.min.js"></script>
+	<script src="static/layer/layer.js"></script>
+</head>
+<body>
+
+<div class="box" v-cloak>
+	<div class="login">
+		<header>
+			<h4>图书管理系统</h4>
+		</header>
+		<content>
+			<div class="left">
+				<img src="static/img/login/leftImg.png" class="logo" height="200" />
+			</div>
+			<div class="right">
+				<div class="title">
+					<span>登录</span>
+				</div>
+				<div class="body">
+					<div class="name">
+						<span>用户名:</span>
+						<input type="text" name="userName" placeholder="请输入..." v-model="name">
+					</div>
+					<div class="password">
+						<span>密码:</span>
+						<input type="password" name="pwd" v-model="password">
+					</div>
+					<div class="checkNumber">
+						<span>验证码:</span>
+						<input type="text" name="checkNumber" v-model="checkNumber">
+						<img src="static/php/code.php" @click="getNewImage" height="20" title="点击换一张" style="cursor: pointer;">
+					</div>
+					<div class="submit">
+						<input type="button" value="游客" @click="simpleLogin($event)">
+						<input type="button" value="登录" @click="managerLogin($event)">
+					</div>
+				</div>
+			</div>
+		</content>	
+	</div>
+</div>
+
+<script src="js/tools.js"></script>
+<script>
+	new Vue({
+		data : {
+			name : "",
+			password : "",
+			checkNumber : "",
+			pass : [false, false, false]
+		},
+		methods : {
+			simpleLogin : function (e) {
+				request.setUserName("freeUser");
+				request.setUserType("0");
+				location.assign("home/homePage.html");
+			},
+			managerLogin : function (e) {
+				var vm = this,
+					checkNumber = vm.checkNumber.toLowerCase();
+				if (vm.sum) {
+					vm.$http.post("static/php/login.php", {name : vm.name, password : vm.password, checkNum : checkNumber}, {emulateJSON : true}).then(function (data) {
+						data = data.data;
+						if (data.state) {
+							request.setUserType(data["type"]);
+							request.setUserName(data["name"]);
+							request.setUserAllName(data['allName']);
+							layer.msg("登录成功！",{icon : 1, time : 500}, function () {
+								location.assign("home/homePage.html");
+							});
+						} else {
+							layer.msg(data.msg, {icon : 2, time : 1200}, function () {
+								vm.name = ""
+								vm.password = ""
+								vm.checkNumber = ""
+								document.images[1].click()
+							})
+						}
+					})
+				} else {
+					layer.msg("请填写完整信息登录，或采用游客模式！", {icon : 3, time: 1200})
+				}
+			},
+			getNewImage : function (e) {
+				var target = e.target
+				target.src = 'static/php/code.php?nocache=' + Math.random()
+			}
+		},
+		watch : {
+			name : function (val) {
+				if (val.length > 0) {
+					this.pass.splice(0, 1, true);
+				} else {
+					this.pass.splice(0, 1, false);
+				}
+			},
+			password : function (val) {
+				if (val.length > 0) {
+					this.pass.splice(1, 1, true);
+				} else {
+					this.pass.splice(1, 1, false);
+				}
+			},
+			checkNumber : function (val) {
+				if (val.length > 0) {
+					this.pass.splice(2, 1, true);
+				} else {
+					this.pass.splice(2, 1, false);
+				}
+			} 
+		},
+		computed : {
+			sum : function () {
+				return this.pass.every(function (val, index, arr) {
+					return val;
+				});
+			}
+		}
+	}).$mount(".box");
+</script>
+
+</body>
+</html>

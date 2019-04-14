@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/x-icon" href="./../favicon.ico">
+	<title>主页</title>
+	<link rel="stylesheet" href="../css/public.css">
+	<link rel="stylesheet" href="../css/homePage.css">
+	<script src="../static/js/vue.min.js"></script>
+	<script src="../static/js/vue-router.min.js"></script>
+	<script src="../static/js/vue-resource.min.js"></script>
+	<script src="../static/js/jquery2.0.3.min.js"></script>
+	<script src="../static/layer/layer.js"></script>
+</head>
+<body>
+	<header>
+		<span>图书管理系统</span>
+		<span class="loginInfo">{{userAllName}}<a href="javascript:;" @click="loginout">{{ userName == "freeUser" ? '退出' : '注销'}}</a></span>
+	</header>
+	<content class="showbox" v-cloak>
+		<ul class="sidebar">
+			<router-link class="item"
+			active-class="itemSelected" 
+			:to="{path : val.path}"
+			tag="li"
+			v-for="(val, index) in items">{{ val['value'] }}</router-link>
+		</ul>
+		<div class="content">
+			<transition name="fade">
+				<router-view></router-view>
+			</transition>		
+		</div>
+	</content>
+	<footer>
+		<span>&copy;支持原创，提高生活品质</span>
+	</footer>
+<script src="../js/tools.js"></script>
+<script src="../js/router.js"></script>
+<script>
+	var header = new Vue({
+		data : {
+			userName : "",
+			userAllName : ""
+		},
+		methods : {
+			loginout : function () {
+				layer.open({
+					content : "确定退出么？",
+					btn : ['确定', '放弃'],
+					yes : function () {
+						request.setUserType("");
+						request.setUserName("");
+						request.setUserAllName("");
+						location.replace("../index.html");
+					}
+				})
+			}
+		},
+		created : function () {
+			this.userName = request.getUserName();
+			this.userAllName = request.getUserAllName();
+
+		}
+	}).$mount("header");
+	// 页面主体
+	var box = new Vue({
+		data : {
+			power : [{ 
+				value : "图书", 
+				path : "/book",
+				index : 0
+			},{ 
+				value : "借阅", 
+				path : "/borrow",
+				index : 1
+			}, { 
+				value : "管理员", 
+				path : "/manager",
+				index : 2
+			}],
+			// 用户分为三种类型
+			// 游客 0
+			// 普通用户 1
+			// 管理员 2
+			userType : 0,
+			checking : [true, false, false]
+		},
+		computed : {
+			items : function () {
+				var vm = this,
+					i = 0,
+					result = [],
+					len = vm.userType + 1;
+				for (; i < len; i++) {
+					if (i == 1 && len == 3) {
+						continue;
+					}
+					result.push(vm.power[i]);
+				}
+				return result;
+			}
+		},
+		router : router,
+		created : function () {
+			this.userType = parseInt(request.getUserType());
+		}
+	}).$mount(".showbox");
+</script>
+</body>
+</html>
