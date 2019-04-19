@@ -1108,12 +1108,10 @@ var tools = {
 
 				},
 				dealReturnDate: function(tag) {
-					if(tag == "0000-00-00") {
-						return "未归还"
-					} else if(tag == "1970-01-01") {
-						return "申请还书"
-					} else {
-						return "已还"
+					if(tag == "0000-00-00" || tag == "1970-01-01") {
+						return
+					} else 
+						return tag
 					}
 				},
 				request: function(page, val) {
